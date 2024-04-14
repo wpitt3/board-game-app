@@ -129,11 +129,24 @@ function ChessTimer() {
         });
     };
 
+    const handleChangePlayerOrder = (fromI: number, toY: number) => {
+        const playerWidth = (window.innerHeight - 80) / players.length;
+        const toI = Math.floor((toY + (playerWidth / 2)) / playerWidth);
+        if (fromI !== toI && gameState === 'PAUSE') {
+            setPlayers((prevPlayers) => {
+                const newPlayers = [...prevPlayers];
+                const removedItem = newPlayers.splice(fromI, 1)[0];
+                newPlayers.splice(toI > fromI ? toI -1 : toI, 0, removedItem);
+                return newPlayers
+            });
+        }
+    }
+
     return (
         <div>
             {gameState === 'RESET' && <EditTime time={time} onTimeEdit={handleTimeEdit} />}
             {gameState === 'RESET' && <EditPlayersTable players={players} onPlayerNameEdit={handlePlayerNameEdit} changePlayerColour={handleChangePlayerColour} />}
-            {gameState !== 'RESET' && <PlayerTable players={players} activePlayerIndex={activePlayerIndex} onTableRowClick={handleTableRowClick} />}
+            {gameState !== 'RESET' && <PlayerTable players={players} activePlayerIndex={activePlayerIndex} onTableRowClick={handleTableRowClick} onDrag={handleChangePlayerOrder}/>}
 
             <div className="buttons">
                 <button className='pause' onClick={handlePauseButtonClick}>
