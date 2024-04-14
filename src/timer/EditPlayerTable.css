@@ -17,4 +17,53 @@
     font-weight: bold;
     font-size: 19px;
     width: 170px;
+    background: none;
+}
+
+.edit-player-row input {
+    border: none;
+    font-weight: bold;
+    font-size: 19px;
+    width: 170px;
+    background: none;
+}
+
+.edit-player-row.colour-0 {
+    background-color: #f08080;
+}
+
+.edit-player-row.colour-1 {
+    background-color: #ffcaaf;
+}
+
+.edit-player-row.colour-2 {
+    background-color: #fdffb6;
+}
+
+.edit-player-row.colour-3 {
+    background-color: #a5ffd6;
+}
+
+.edit-player-row.colour-4 {
+    background-color: #84dcc6;
+}
+
+.edit-player-row.colour-5 {
+    background-color: #bde0fe;
+}
+
+.edit-player-row.colour-6 {
+    background-color: #a0c4ff;
+}
+
+.edit-player-row.colour-7 {
+    background-color: #cdb4db;
+}
+
+.edit-player-row.colour-8 {
+    background-color: #efcfe3;
+}
+
+.edit-player-row.colour-9 {
+    background-color: #ceb5b7;
 }

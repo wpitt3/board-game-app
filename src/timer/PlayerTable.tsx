@@ -4,6 +4,8 @@ import './PlayerTable.css';
 interface Player {
     name: string;
     timer: number;
+    live: boolean;
+    colour: number;
 }
 
 interface PlayerTableProps {
@@ -34,12 +36,10 @@ const PlayerRow: React.FC<PlayerRowProps> = ({ player, index, active, onClick}) 
     const secs = Math.ceil(player.timer / 1000)
     const mins = Math.floor(secs / 60)
     const hours = Math.floor(mins / 60)
-
     return (
-        <tr className={`player-row ${active ? 'active' : ''}`} onClick={onClick}
-        >
+        <tr className={`player-row ${!player.live ? 'dead' : ''}  colour-${player.colour}`} onClick={onClick}>
             <td>{player.name}</td>
-            <td>
+            <td className={active ? 'active' : ''}>
                 <TimerItem value={hours}/>
                 <div className={'colon'}>{":"}</div>
                 <TimerItem value={mins}/>

@@ -9,6 +9,7 @@ interface Player {
     name: string;
     timer: number;
     live: boolean;
+    colour: number;
 }
 
 // change order
@@ -24,15 +25,16 @@ function ChessTimer() {
     useEffect(() => {
         // Sample data for players
         const initialPlayers: Player[] = [
-            { name: 'Player 1', timer: time, live: true },
-            { name: 'Player 2', timer: time, live: true },
-            { name: 'Player 3', timer: time, live: true },
-            { name: 'Player 4', timer: time, live: true },
-            { name: 'Player 5', timer: time, live: true },
-            { name: 'Player 6', timer: time, live: true },
-            { name: 'Player 7', timer: time, live: true },
-            { name: 'Player 8', timer: time, live: true },
-            { name: 'Player 9', timer: time, live: true },
+            { name: 'Player', timer: time, live: true, colour: 0 },
+            { name: 'Player', timer: time, live: true, colour: 1 },
+            { name: 'Player', timer: time, live: true, colour: 2 },
+            { name: 'Player', timer: time, live: true, colour: 3 },
+            { name: 'Player', timer: time, live: true, colour: 4 },
+            { name: 'Player', timer: time, live: true, colour: 5 },
+            { name: 'Player', timer: time, live: true, colour: 6 },
+            { name: 'Player', timer: time, live: true, colour: 7 },
+            { name: 'Player', timer: time, live: true, colour: 8 },
+            { name: 'Player', timer: time, live: true, colour: 9 },
         ];
         setPlayers(initialPlayers);
     }, []);
@@ -69,6 +71,14 @@ function ChessTimer() {
         });
     };
 
+    const handleChangePlayerColour = (i: number) => {
+        setPlayers((prevPlayers) => {
+            const newPlayers = [...prevPlayers];
+            newPlayers[i].colour = (newPlayers[i].colour + 1) % 10;
+            return newPlayers;
+        });
+    };
+
     const handleTimeEdit = (newTime: number) => {
         setMaxTime(newTime)
         setPlayers((prevPlayers) => {
@@ -97,7 +107,10 @@ function ChessTimer() {
         setGameState('RESET')
         setPlayers((prevPlayers) => {
             const newPlayers = [...prevPlayers];
-            newPlayers.forEach( (player) => player.timer = time)
+            newPlayers.forEach( (player) => {
+                player.timer = time;
+                player.live = true;
+            })
             return newPlayers;
         });
     };
@@ -107,7 +120,7 @@ function ChessTimer() {
             const newPlayers = [...prevPlayers];
             if (newPlayers.length + change > 0 && newPlayers.length + change < 11) {
                 if (change > 0) {
-                    newPlayers.push({ name: 'Player', timer: time, live: true });
+                    newPlayers.push({ name: 'Player', timer: time, live: true, colour: newPlayers.length});
                 } else {
                     newPlayers.pop();
                 }
@@ -119,7 +132,7 @@ function ChessTimer() {
     return (
         <div>
             {gameState === 'RESET' && <EditTime time={time} onTimeEdit={handleTimeEdit} />}
-            {gameState === 'RESET' && <EditPlayersTable players={players} onPlayerNameEdit={handlePlayerNameEdit} />}
+            {gameState === 'RESET' && <EditPlayersTable players={players} onPlayerNameEdit={handlePlayerNameEdit} changePlayerColour={handleChangePlayerColour} />}
             {gameState !== 'RESET' && <PlayerTable players={players} activePlayerIndex={activePlayerIndex} onTableRowClick={handleTableRowClick} />}
             <div className="buttons">
                 <button className='pause' onClick={handlePauseButtonClick}>

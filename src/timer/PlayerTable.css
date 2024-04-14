@@ -9,10 +9,6 @@
     font-size: 19px;
 }
 
-.player-row.active {
-    background-color: #f0f0f0;
-}
-
 .player-row td {
     padding: 8px;
 }
@@ -31,4 +27,52 @@
     float: left;
     margin-top: -1px;
     padding: 0 5px 0 5px;
+}
+
+.player-row .active {
+    background: #eeeeee;
+    color: red;
+    text-decoration: underline;
+}
+
+.player-row.colour-0 {
+    background-color: #f08080;
+}
+
+.player-row.colour-1 {
+    background-color: #ffcaaf;
+}
+
+.player-row.colour-2 {
+    background-color: #fdffb6;
+}
+
+.player-row.colour-3 {
+    background-color: #a5ffd6;
+}
+
+.player-row.colour-4 {
+    background-color: #84dcc6;
+}
+
+.player-row.colour-5 {
+    background-color: #bde0fe;
+}
+
+.player-row.colour-6 {
+    background-color: #a0c4ff;
+}
+
+.player-row.colour-7 {
+    background-color: #cdb4db;
+}
+.player-row.colour-8 {
+    background-color: #efcfe3;
+}
+.player-row.colour-9 {
+    background-color: #ceb5b7;
+}
+
+.player-row.dead {
+    background-color: #bbb;
 }
