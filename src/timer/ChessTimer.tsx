@@ -58,9 +58,23 @@ function ChessTimer() {
         }
     }, [players, activePlayerIndex]);
 
+    const findNextActivePlayer = (from: number) => {
+        for (let i = 0; i < players.length; i++) {
+            if (players[(i + from) % players.length].live) {
+                return (i + from) % players.length
+            }
+        }
+        return -1;
+    }
+
     const handleTableRowClick = (i: number) => {
-        setActivePlayerIndex((activePlayerIndex + 1) % players.length);
-        setGameState('PLAY')
+        const nextPlayer = findNextActivePlayer(activePlayerIndex + 1);
+        setActivePlayerIndex(nextPlayer)
+        if (nextPlayer === -1) {
+            setGameState('PAUSE')
+        } else {
+            setGameState('PLAY')
+        }
     };
 
     const handlePlayerNameEdit = (name: string, i: number) => {
@@ -90,12 +104,13 @@ function ChessTimer() {
 
     const handlePauseButtonClick = () => {
         if (activePlayerIndex === -1) {
-            let i = 0;
-            while(players[i].live === false) {
-
+            const nextPlayer = findNextActivePlayer(0);
+            setActivePlayerIndex(nextPlayer)
+            if (nextPlayer === -1) {
+                setGameState('PAUSE')
+            } else {
+                setGameState('PLAY')
             }
-            setActivePlayerIndex(0)
-            setGameState('PLAY')
         } else {
             setActivePlayerIndex(-1)
             setGameState('PAUSE')
