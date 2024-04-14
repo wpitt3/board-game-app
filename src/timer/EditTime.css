@@ -1,0 +1,20 @@
+.edit-time {
+    height: 90px;
+    background: #EEE;
+}
+
+.edit-time-items {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-time-item {
+    padding: 14px;
+    float: left;
+}
+
+.edit-time-item input{
+    font-size: 35px;
+    border: none;
+    width: 50px;
+}

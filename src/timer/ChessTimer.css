@@ -1,0 +1,33 @@
+.buttons {
+    height: 80px;
+}
+
+.buttons button {
+    margin-top: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background-color: #0056b3;
+}
+
+.buttons .pause {
+    position: absolute;
+    margin-left: 20px;
+    width: 80px;
+}
+
+.buttons .reset {
+    position: absolute;
+    margin-left: 260px;
+}
+
+.buttons .player-change {
+    position: absolute;
+    margin-left: 120px;
+}

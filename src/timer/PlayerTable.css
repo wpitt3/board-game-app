@@ -1,0 +1,34 @@
+.player-table {
+    width: 100%;
+    height: calc(100vh - 180px);
+    border-collapse: collapse;
+}
+
+.player-row {
+    border-bottom: 1px solid #ddd;
+    font-size: 19px;
+}
+
+.player-row.active {
+    background-color: #f0f0f0;
+}
+
+.player-row td {
+    padding: 8px;
+}
+
+.player-row td {
+    font-weight: bold;
+}
+
+.player-row td .timer-item {
+    float: left;
+    width: 25px;
+    font-size: 20px;
+}
+
+.player-row td .colon {
+    float: left;
+    margin-top: -1px;
+    padding: 0 5px 0 5px;
+}
