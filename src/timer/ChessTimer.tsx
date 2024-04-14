@@ -12,29 +12,22 @@ interface Player {
     colour: number;
 }
 
+type GameState = 'RESET' | 'PLAY' | 'PAUSE'
+
 // change order
 // start on x player
 // set colour
 
 function ChessTimer() {
-    const [gameState, setGameState] = useState<string>('RESET');
+    const [gameState, setGameState] = useState<GameState>('RESET');
     const [players, setPlayers] = useState<Player[]>([]);
     const [activePlayerIndex, setActivePlayerIndex] = useState<number>(-1);
     const [time, setMaxTime] = useState<number>(60000);
 
     useEffect(() => {
-        // Sample data for players
         const initialPlayers: Player[] = [
             { name: 'Player', timer: time, live: true, colour: 0 },
             { name: 'Player', timer: time, live: true, colour: 1 },
-            { name: 'Player', timer: time, live: true, colour: 2 },
-            { name: 'Player', timer: time, live: true, colour: 3 },
-            { name: 'Player', timer: time, live: true, colour: 4 },
-            { name: 'Player', timer: time, live: true, colour: 5 },
-            { name: 'Player', timer: time, live: true, colour: 6 },
-            { name: 'Player', timer: time, live: true, colour: 7 },
-            { name: 'Player', timer: time, live: true, colour: 8 },
-            { name: 'Player', timer: time, live: true, colour: 9 },
         ];
         setPlayers(initialPlayers);
     }, []);
@@ -70,11 +63,7 @@ function ChessTimer() {
     const handleTableRowClick = (i: number) => {
         const nextPlayer = findNextActivePlayer(activePlayerIndex + 1);
         setActivePlayerIndex(nextPlayer)
-        if (nextPlayer === -1) {
-            setGameState('PAUSE')
-        } else {
-            setGameState('PLAY')
-        }
+        setGameState(nextPlayer === -1 ? 'PAUSE' : 'PLAY')
     };
 
     const handlePlayerNameEdit = (name: string, i: number) => {
@@ -106,11 +95,7 @@ function ChessTimer() {
         if (activePlayerIndex === -1) {
             const nextPlayer = findNextActivePlayer(0);
             setActivePlayerIndex(nextPlayer)
-            if (nextPlayer === -1) {
-                setGameState('PAUSE')
-            } else {
-                setGameState('PLAY')
-            }
+            setGameState(nextPlayer === -1 ? 'PAUSE' : 'PLAY')
         } else {
             setActivePlayerIndex(-1)
             setGameState('PAUSE')
@@ -149,6 +134,7 @@ function ChessTimer() {
             {gameState === 'RESET' && <EditTime time={time} onTimeEdit={handleTimeEdit} />}
             {gameState === 'RESET' && <EditPlayersTable players={players} onPlayerNameEdit={handlePlayerNameEdit} changePlayerColour={handleChangePlayerColour} />}
             {gameState !== 'RESET' && <PlayerTable players={players} activePlayerIndex={activePlayerIndex} onTableRowClick={handleTableRowClick} />}
+
             <div className="buttons">
                 <button className='pause' onClick={handlePauseButtonClick}>
                     {gameState === 'PLAY' ? 'Pause' : 'Play'}

@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25d7077e-baea-483c-8da9-ec09d830a2d2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/board-game-app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timer/ChessTimer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/ChessTimer.tsx" afterDir="false" />
     </list>
@@ -20,6 +22,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2f4IrwROLiHc6WW6BVSvvJs2Kzc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -33,14 +38,19 @@
     "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/usr/local/development/board-game-app/src/timer",
+    "last_opened_file_path": "/usr/local/development/board-game-app",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external"
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "ts.external.directory.path": "/usr/local/development/board-game-app/node_modules/typescript/lib"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -57,7 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1713054126235</updated>
       <workItem from="1713054128395" duration="18003000" />
-      <workItem from="1713075525923" duration="2344000" />
+      <workItem from="1713075525923" duration="3312000" />
     </task>
     <servers />
   </component>
