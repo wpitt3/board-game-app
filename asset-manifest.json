@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/board-games/static/css/main.b4ca1638.css",
-    "main.js": "/board-games/static/js/main.6bc5462d.js",
-    "static/js/453.bdced4ed.chunk.js": "/board-games/static/js/453.bdced4ed.chunk.js",
-    "index.html": "/board-games/index.html",
-    "main.b4ca1638.css.map": "/board-games/static/css/main.b4ca1638.css.map",
-    "main.6bc5462d.js.map": "/board-games/static/js/main.6bc5462d.js.map",
-    "453.bdced4ed.chunk.js.map": "/board-games/static/js/453.bdced4ed.chunk.js.map"
+    "main.css": "/board-game-app/static/css/main.b4ca1638.css",
+    "main.js": "/board-game-app/static/js/main.c2669b06.js",
+    "static/js/453.bdced4ed.chunk.js": "/board-game-app/static/js/453.bdced4ed.chunk.js",
+    "index.html": "/board-game-app/index.html",
+    "main.b4ca1638.css.map": "/board-game-app/static/css/main.b4ca1638.css.map",
+    "main.c2669b06.js.map": "/board-game-app/static/js/main.c2669b06.js.map",
+    "453.bdced4ed.chunk.js.map": "/board-game-app/static/js/453.bdced4ed.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b4ca1638.css",
-    "static/js/main.6bc5462d.js"
+    "static/js/main.c2669b06.js"
   ]
 }
