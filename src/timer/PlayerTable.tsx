@@ -44,13 +44,16 @@ const PlayerRow: React.FC<PlayerRowProps> = ({ player, index, active, onClick, o
             draggable
             onTouchEnd={(e) => onDrag(e.changedTouches[0].clientY)}
         >
-            <td>{player.name}</td>
+            <td className={'player-name'}>{player.name}</td>
             <td className={active ? 'active' : ''}>
-                <TimerItem value={hours}/>
-                <div className={'colon'}>{":"}</div>
-                <TimerItem value={mins}/>
-                <div className={'colon'}>{":"}</div>
-                <TimerItem value={secs}/></td>
+                <div className={'time'}>
+                    <TimerItem value={hours}/>
+                    <div className={'colon'}>{":"}</div>
+                    <TimerItem value={mins}/>
+                    <div className={'colon'}>{":"}</div>
+                    <TimerItem value={secs}/>
+                </div>
+            </td>
         </tr>
     );
 };

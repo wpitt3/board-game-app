@@ -16,6 +16,15 @@
     font-weight: bold;
 }
 
+.player-row .player-name {
+    width: 200px;
+}
+
+.player-row td .time {
+    float: right;
+    margin-right: 15px;
+}
+
 .player-row td .timer-item {
     float: left;
     width: 25px;

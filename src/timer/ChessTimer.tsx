@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import './ChessTimer.css';
+import './TimerControlButtons.css';
 import PlayerTable from "./PlayerTable";
 import EditPlayersTable from "./EditPlayersTable";
 import EditTime from "./EditTime";
@@ -146,7 +146,7 @@ function ChessTimer() {
             {gameState === 'RESET' && <EditPlayersTable players={players} onPlayerNameEdit={handlePlayerNameEdit} changePlayerColour={handleChangePlayerColour} />}
             {gameState !== 'RESET' && <PlayerTable players={players} activePlayerIndex={activePlayerIndex} onTableRowClick={handleTableRowClick} onDrag={handleChangePlayerOrder}/>}
 
-            <div className="buttons">
+            <div className="time-control-buttons">
                 <button className='pause' onClick={handlePauseButtonClick}>
                     {gameState === 'PLAY' ? 'Pause' : 'Play'}
                 </button>

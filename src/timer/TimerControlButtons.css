@@ -1,0 +1,37 @@
+.time-control-buttons {
+    height: 80px;
+    background-color: #eee;
+}
+
+.time-control-buttons button {
+    margin-top: 15px;
+    background-color: #888;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.time-control-buttons .pause {
+    float: left;
+    margin-left: 15px;
+    width: 80px;
+}
+
+.time-control-buttons .reset {
+    float: right;
+    margin-right: 15px;
+}
+
+.time-control-buttons .player-change {
+    display: table;
+    margin: auto;
+}
+
+.time-control-buttons .player-change button {
+    margin: 15px 7px 0 7px;
+    width: 50px;
+    padding: 10px 10px;
+}

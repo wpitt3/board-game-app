@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="25d7077e-baea-483c-8da9-ec09d830a2d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timer/ChessTimer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/TimerControlButtons.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timer/ChessTimer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/ChessTimer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timer/EditPlayerTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/EditPlayerTable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timer/EditTime.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/EditTime.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timer/PlayerTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/PlayerTable.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timer/PlayerTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/PlayerTable.tsx" afterDir="false" />
     </list>
