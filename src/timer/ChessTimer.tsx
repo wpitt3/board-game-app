@@ -45,7 +45,7 @@ function ChessTimer() {
                     }
                     return newPlayers
                 });
-            }, 19);
+            }, 10);
 
             return () => clearInterval(interval);
         }
