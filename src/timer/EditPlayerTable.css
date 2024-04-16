@@ -4,20 +4,8 @@
     border-collapse: collapse;
 }
 
-.edit-player-row {
-    border-bottom: 1px solid #ddd;
-}
-
 .edit-player-row td {
     padding: 8px;
-}
-
-.edit-player-row input {
-    border: none;
-    font-weight: bold;
-    font-size: 19px;
-    width: 170px;
-    background: none;
 }
 
 .edit-player-row input {

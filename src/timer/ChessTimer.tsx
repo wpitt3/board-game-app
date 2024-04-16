@@ -14,26 +14,24 @@ interface Player {
 
 type GameState = 'RESET' | 'PLAY' | 'PAUSE'
 
-// change order
+const INITIAL_TIME = 60000;
+
 // start on x player
 // set colour
 
 function ChessTimer() {
+    const initialPlayers: Player[] = [
+        { name: 'Player', timer: INITIAL_TIME, live: true, colour: 0 },
+        { name: 'Player', timer: INITIAL_TIME, live: true, colour: 1 },
+    ];
+
     const [gameState, setGameState] = useState<GameState>('RESET');
-    const [players, setPlayers] = useState<Player[]>([]);
+    const [players, setPlayers] = useState<Player[]>(initialPlayers);
     const [activePlayerIndex, setActivePlayerIndex] = useState<number>(-1);
-    const [time, setMaxTime] = useState<number>(60000);
+    const [time, setMaxTime] = useState<number>(INITIAL_TIME);
 
     useEffect(() => {
-        const initialPlayers: Player[] = [
-            { name: 'Player', timer: time, live: true, colour: 0 },
-            { name: 'Player', timer: time, live: true, colour: 1 },
-        ];
-        setPlayers(initialPlayers);
-    }, []);
-
-    useEffect(() => {
-        if (players.length > 0 && activePlayerIndex != -1) {
+        if (players.length > 0 && activePlayerIndex !== -1) {
             const interval = setInterval(() => {
                 setPlayers((prevPlayers) => {
                     const newPlayers = [...prevPlayers];
