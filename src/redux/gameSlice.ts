@@ -2,6 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {GameState, Player} from "../definitions";
 
 const INITIAL_TIME = 60000;
+const MAX_PLAYER_COUNT = 10;
 
 const initialState: GameState = {
     status: 'RESET',
@@ -17,6 +18,17 @@ const findNextActivePlayer = (from: number, players: Player[]) => {
     for (let i = 0; i < players.length; i++) {
         if (players[(i + from) % players.length].live) {
             return (i + from) % players.length
+        }
+    }
+    return -1;
+}
+
+const findNextColour = (from: number, players: Player[]) => {
+    const assignedKeys = new Set(players.map(player => player.colour));
+    for (let i = 0; i <= MAX_PLAYER_COUNT; i++) {
+        const key = (from + i) % MAX_PLAYER_COUNT;
+        if (!assignedKeys.has(key)) {
+            return key;
         }
     }
     return -1;
@@ -58,12 +70,17 @@ const gameSlice = createSlice({
                 player.live = true;
             })
         },
+        updatePlayerColour(state, action: PayloadAction<number>) {
+            const i = action.payload;
+            const nextColour = findNextColour(state.players[i].colour + 1, state.players);
+            state.players[i].colour = nextColour === -1 ? state.players[i].colour : nextColour;
+        },
         updatePlayerName(state, action: PayloadAction<updateNameProps>) {
             const { index, newName } = action.payload;
             state.players[index].name = newName;
         },
         addPlayer(state) {
-            state.players.push({ name: 'Player', timer: state.maxTime, live: true, colour: state.players.length});
+            state.players.push({ name: 'Player', timer: state.maxTime, live: true, colour: findNextColour(state.players.length, state.players)});
         },
         removePlayer(state) {
             state.players.pop();
@@ -84,5 +101,5 @@ const gameSlice = createSlice({
     },
 });
 
-export const { updateMaxTime, nextPlayer, resetGame, pauseGame, updatePlayerName, addPlayer, removePlayer, updateSwapPlayers, updateCountDown } = gameSlice.actions;
+export const { updateMaxTime, nextPlayer, resetGame, pauseGame, updatePlayerName, addPlayer, removePlayer, updateSwapPlayers, updateCountDown, updatePlayerColour } = gameSlice.actions;
 export default gameSlice.reducer;

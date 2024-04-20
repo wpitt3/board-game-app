@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25d7077e-baea-483c-8da9-ec09d830a2d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/redux/gameSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameSlice.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rootReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/rootReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/gameSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/gameSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timer/ChessTimer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/ChessTimer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timer/EditPlayerTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/EditPlayerTable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timer/EditPlayersTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/EditPlayersTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timer/TimerContolButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/TimerControlButtons.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +74,7 @@
       <updated>1713054126235</updated>
       <workItem from="1713054128395" duration="18003000" />
       <workItem from="1713075525923" duration="6976000" />
-      <workItem from="1713584294380" duration="6911000" />
+      <workItem from="1713584294380" duration="8885000" />
     </task>
     <servers />
   </component>
@@ -83,5 +83,16 @@
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/timer/EditPlayersTable.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
