@@ -8,6 +8,7 @@ const initialState: GameState = {
     status: 'RESET',
     activePlayer: -1,
     maxTime: INITIAL_TIME,
+    lastChangeTime: Date.now(),
     players: [
         { name: 'Player', timer: INITIAL_TIME, live: true, colour: 0 },
         { name: 'Player', timer: INITIAL_TIME, live: true, colour: 1 },
@@ -55,10 +56,26 @@ const gameSlice = createSlice({
             })
         },
         nextPlayer(state) {
+            if (state.activePlayer !== -1) {
+                state.players[state.activePlayer].timer -= (Date.now() - state.lastChangeTime);
+                if (state.players[state.activePlayer].timer < 0) {
+                    state.players[state.activePlayer].timer = 0;
+                    state.players[state.activePlayer].live = false;
+                }
+            }
+            state.lastChangeTime = Date.now()
             state.activePlayer = findNextActivePlayer(state.activePlayer + 1, state.players);
             state.status = state.activePlayer === -1 ? 'PAUSE' : 'PLAY';
         },
         pauseGame(state) {
+            if (state.activePlayer !== -1) {
+                state.players[state.activePlayer].timer -= (Date.now() - state.lastChangeTime);
+                if (state.players[state.activePlayer].timer < 0) {
+                    state.players[state.activePlayer].timer = 0;
+                    state.players[state.activePlayer].live = false;
+                }
+            }
+            state.lastChangeTime = Date.now()
             state.activePlayer = -1;
             state.status = 'PAUSE';
         },
@@ -91,11 +108,13 @@ const gameSlice = createSlice({
             state.players.splice(to > from ? to -1 : to, 0, removedItem);
         },
         updateCountDown(state) {
-            if (state.players[state.activePlayer].timer < 10) {
-                state.players[state.activePlayer].timer = 0;
-                state.players[state.activePlayer].live = false;
-            } else {
-                state.players[state.activePlayer].timer -= 10;
+            if (state.activePlayer !== -1) {
+                state.players[state.activePlayer].timer -= (Date.now() - state.lastChangeTime);
+                if (state.players[state.activePlayer].timer < 0) {
+                    state.players[state.activePlayer].timer = 0;
+                    state.players[state.activePlayer].live = false;
+                }
+                state.lastChangeTime = Date.now()
             }
         }
     },

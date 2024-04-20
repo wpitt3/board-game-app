@@ -11,4 +11,5 @@ export interface GameState {
     activePlayer: number;
     maxTime: number;
     players: Player[];
+    lastChangeTime: number;
 }
