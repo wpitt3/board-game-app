@@ -4,6 +4,9 @@ import './TimerControlButtons.css';
 import PlayerTable from "./PlayerTable";
 import EditPlayersTable from "./EditPlayersTable";
 import EditTime from "./EditTime";
+import { useSelector, useDispatch } from 'react-redux';
+import {RootState} from "../store";
+import {updateStatus} from "../gameSlice";
 
 interface Player {
     name: string;
@@ -12,7 +15,7 @@ interface Player {
     colour: number;
 }
 
-type GameState = 'RESET' | 'PLAY' | 'PAUSE'
+// type GameState = 'RESET' | 'PLAY' | 'PAUSE'
 
 const INITIAL_TIME = 60000;
 
@@ -20,12 +23,13 @@ const INITIAL_TIME = 60000;
 // set colour
 
 function ChessTimer() {
+    const dispatch = useDispatch();
     const initialPlayers: Player[] = [
         { name: 'Player', timer: INITIAL_TIME, live: true, colour: 0 },
         { name: 'Player', timer: INITIAL_TIME, live: true, colour: 1 },
     ];
 
-    const [gameState, setGameState] = useState<GameState>('RESET');
+    const gameStatus = useSelector((state: RootState) => state.game.status);
     const [players, setPlayers] = useState<Player[]>(initialPlayers);
     const [activePlayerIndex, setActivePlayerIndex] = useState<number>(-1);
     const [time, setMaxTime] = useState<number>(INITIAL_TIME);
@@ -61,7 +65,7 @@ function ChessTimer() {
     const handleTableRowClick = (i: number) => {
         const nextPlayer = findNextActivePlayer(activePlayerIndex + 1);
         setActivePlayerIndex(nextPlayer)
-        setGameState(nextPlayer === -1 ? 'PAUSE' : 'PLAY')
+        dispatch(updateStatus(nextPlayer === -1 ? 'PAUSE' : 'PLAY'));
     };
 
     const handlePlayerNameEdit = (name: string, i: number) => {
@@ -93,16 +97,16 @@ function ChessTimer() {
         if (activePlayerIndex === -1) {
             const nextPlayer = findNextActivePlayer(0);
             setActivePlayerIndex(nextPlayer)
-            setGameState(nextPlayer === -1 ? 'PAUSE' : 'PLAY')
+            dispatch(updateStatus(nextPlayer === -1 ? 'PAUSE' : 'PLAY'));
         } else {
             setActivePlayerIndex(-1)
-            setGameState('PAUSE')
+            dispatch(updateStatus('PAUSE'));
         }
     };
 
     const handleResetButtonClick = () => {
         setActivePlayerIndex(-1)
-        setGameState('RESET')
+        dispatch(updateStatus('RESET'));
         setPlayers((prevPlayers) => {
             const newPlayers = [...prevPlayers];
             newPlayers.forEach( (player) => {
@@ -130,7 +134,7 @@ function ChessTimer() {
     const handleChangePlayerOrder = (fromI: number, toY: number) => {
         const playerWidth = (window.innerHeight - 80) / players.length;
         const toI = Math.floor((toY + (playerWidth / 2)) / playerWidth);
-        if (fromI !== toI && gameState === 'PAUSE') {
+        if (fromI !== toI && gameStatus === 'PAUSE') {
             setPlayers((prevPlayers) => {
                 const newPlayers = [...prevPlayers];
                 const removedItem = newPlayers.splice(fromI, 1)[0];
@@ -142,18 +146,18 @@ function ChessTimer() {
 
     return (
         <div>
-            {gameState === 'RESET' && <EditTime time={time} onTimeEdit={handleTimeEdit} />}
-            {gameState === 'RESET' && <EditPlayersTable players={players} onPlayerNameEdit={handlePlayerNameEdit} changePlayerColour={handleChangePlayerColour} />}
-            {gameState !== 'RESET' && <PlayerTable players={players} activePlayerIndex={activePlayerIndex} onTableRowClick={handleTableRowClick} onDrag={handleChangePlayerOrder}/>}
+            {gameStatus === 'RESET' && <EditTime time={time} onTimeEdit={handleTimeEdit} />}
+            {gameStatus === 'RESET' && <EditPlayersTable players={players} onPlayerNameEdit={handlePlayerNameEdit} changePlayerColour={handleChangePlayerColour} />}
+            {gameStatus !== 'RESET' && <PlayerTable players={players} activePlayerIndex={activePlayerIndex} onTableRowClick={handleTableRowClick} onDrag={handleChangePlayerOrder}/>}
 
             <div className="time-control-buttons">
                 <button className='pause' onClick={handlePauseButtonClick}>
-                    {gameState === 'PLAY' ? 'Pause' : 'Play'}
+                    {gameStatus === 'PLAY' ? 'Pause' : 'Play'}
                 </button>
-                {gameState !== 'PLAY' && (<button className='reset' onClick={handleResetButtonClick}>
+                {gameStatus !== 'PLAY' && (<button className='reset' onClick={handleResetButtonClick}>
                     Reset
                 </button>)}
-                {gameState === 'RESET' && (<div className='player-change' ><button onClick={() => handleChangePlayerCount(-1)}>-</button>
+                {gameStatus === 'RESET' && (<div className='player-change' ><button onClick={() => handleChangePlayerCount(-1)}>-</button>
                     <button onClick={() => handleChangePlayerCount(+1)}>+</button></div>
                 )}
 
