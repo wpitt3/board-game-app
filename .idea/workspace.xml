@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25d7077e-baea-483c-8da9-ec09d830a2d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/definitions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/definitions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/gameSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/gameSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timer/ChessTimer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/ChessTimer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timer/EditTime.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/EditTime.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timer/EditTime.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/EditTime.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timer/SettingsMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/SettingsMenu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timer/SettingsMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/SettingsMenu.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +76,7 @@
       <workItem from="1713075525923" duration="6976000" />
       <workItem from="1713584294380" duration="8885000" />
       <workItem from="1723348457522" duration="2793000" />
-      <workItem from="1723950946042" duration="11848000" />
+      <workItem from="1723950946042" duration="14411000" />
     </task>
     <servers />
   </component>

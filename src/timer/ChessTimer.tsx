@@ -67,8 +67,7 @@ function ChessTimer() {
     return (
         <div>
             {(gameStatus === 'RESET' || gameStatus === 'SETTINGS') &&  <TimerHeader time={time} gameStatus={gameStatus} onTimerModeEdit={handleToggleSettings}/>}
-            {/*{gameStatus === 'RESET' && <EditTime time={time} onTimeEdit={handleTimeEdit} onTimerModeEdit={handleTimerModeEdit}/>}*/}
-            {gameStatus === 'SETTINGS' && <SettingsMenu onTimerTypeEdit={handleTimerModeEdit} timerMode={timerMode}/>}
+            {gameStatus === 'SETTINGS' && <SettingsMenu time={time} onTimeEdit={handleTimeEdit} onTimerTypeEdit={handleTimerModeEdit} timerMode={timerMode}/>}
             {gameStatus === 'RESET' && <EditPlayersTable players={players} onPlayerNameEdit={handlePlayerNameEdit} changePlayerColour={handleChangePlayerColour} />}
             {gameStatus !== 'RESET' && gameStatus !== 'SETTINGS' && <PlayerTable players={players} activePlayerIndex={activePlayerIndex} onTableRowClick={handleTableRowClick} onDrag={handleChangePlayerOrder}/>}
             {gameStatus !== 'SETTINGS' && <TimerControlButtons/>}

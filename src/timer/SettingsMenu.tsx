@@ -1,11 +1,14 @@
 import React from 'react';
 import './SettingsMenu.css';
 import {TimerType} from "../definitions";
+import EditTime from "./EditTime";
 
 
 interface SettingsMenuProps {
     onTimerTypeEdit: (i:TimerType) => void;
     timerMode: TimerType;
+    time: number;
+    onTimeEdit: (i:number) => void;
 }
 
 interface TimerTypeRow {
@@ -14,7 +17,9 @@ interface TimerTypeRow {
     description: string;
 }
 
-interface TimerTypeRowProps extends TimerTypeRow, SettingsMenuProps {
+interface TimerTypeRowProps extends TimerTypeRow {
+    onTimerTypeEdit: (i:TimerType) => void;
+    timerMode: TimerType;
 }
 
 const TimerTypeRow: React.FC<TimerTypeRowProps> = ({ timerMode, title, description, onTimerTypeEdit, timerType}) => {
@@ -28,18 +33,25 @@ const TimerTypeRow: React.FC<TimerTypeRowProps> = ({ timerMode, title, descripti
 
 const SettingsMenu: React.FC<SettingsMenuProps> = ({
        onTimerTypeEdit,
-       timerMode
+       timerMode,
+       time,
+       onTimeEdit,
      }) => {
 
     const timerTypeRow: TimerTypeRow[] = [
         {timerType: "TOTAL_TIMER", title: "Stopwatch", description: "Counts time taken"},
-        {timerType: "TOTAL_COUNTDOWN", title: "Per Game", description: "Counts down time for whole game"},
-        {timerType: "ROUND_COUNTDOWN", title: "Per Turn", description: "Counts down time for whole turn"},
+        {timerType: "TOTAL_COUNTDOWN", title: "Per Game", description: "Timer per player for whole game"},
+        {timerType: "ROUND_COUNTDOWN", title: "Per Turn", description: "Timer per player for each turn"},
         {timerType: "FISHER", title: "Fisher", description: "Time per turn, spare time is kept for later"},
     ];
 
     return (
         <div className={"clock-options-container"}>
+            {timerMode === 'TOTAL_TIMER' && <div className={"edit-time"}/>}
+            {timerMode === 'TOTAL_COUNTDOWN' && <EditTime title={'Game :'} time={time} onTimeEdit={onTimeEdit}/>}
+            {timerMode === 'ROUND_COUNTDOWN' && <EditTime title={'Turn :'} time={time} onTimeEdit={onTimeEdit}/>}
+            {timerMode === 'FISHER' && <EditTime title={'Turn :'} time={time} onTimeEdit={onTimeEdit}/>}
+
             <div className={"clock-options"}>
                 {timerTypeRow.map((timerType, index) => (
                     <TimerTypeRow key={index} timerMode={timerMode} onTimerTypeEdit={onTimerTypeEdit} timerType={timerType.timerType} title={timerType.title} description={timerType.description} />

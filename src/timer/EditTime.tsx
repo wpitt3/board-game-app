@@ -5,6 +5,7 @@ import './EditTime.css';
 interface EditTimeProps {
     time: number;
     onTimeEdit: (i:number) => void;
+    title: string;
 }
 
 interface EditTimeItemProps {
@@ -30,8 +31,9 @@ const EditTimeItem: React.FC<EditTimeItemProps> = ({time, onChange}) => {
 }
 
 const EditTime: React.FC<EditTimeProps> = ({
-           time,
-           onTimeEdit,
+       time,
+       onTimeEdit,
+       title
      }) => {
 
     const SEC_IN_MILLIS =     1000;
@@ -44,6 +46,7 @@ const EditTime: React.FC<EditTimeProps> = ({
 
     return (
         <div className={"edit-time"}>
+            <div className={"edit-time-title"}>{title}</div>
             <div className={"edit-time-items"}>
                 <EditTimeItem time={hours} onChange={(newHours) => onTimeEdit(time - hours * HOUR_IN_MILLIS + newHours * HOUR_IN_MILLIS)}></EditTimeItem>
                 <EditTimeItem time={mins} onChange={(newMins) => onTimeEdit(time - mins * MIN_IN_MILLIS + newMins * MIN_IN_MILLIS)}></EditTimeItem>
