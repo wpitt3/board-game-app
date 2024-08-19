@@ -1,0 +1,45 @@
+.timer-header {
+    display: block;
+    width: 100%;
+    height: 90px;
+    background: #EEE;
+}
+
+.timer-header-items {
+    float: left;
+    height: 90px;
+    width: calc(100% - 100px);
+}
+
+.time-in-header {
+    float: left;
+    padding: 26px 0 0 20px;
+    font-size: 30px;
+}
+
+.time-in-header-unit {
+    float: left;
+    padding: 0 0 0 5px;
+}
+
+.time-in-header-unit-separator {
+    float: left;
+    padding: 0 0 0 5px;
+    margin-top: -2px;
+}
+
+.timer-header-settings-container {
+    display: block;
+    height: 90px;
+    width: 90px;
+    float: right;
+}
+
+.timer-header-settings {
+    display: flex;
+    padding: 25px;
+}
+
+.timer-header-settings i {
+    font-size: 40px;
+}

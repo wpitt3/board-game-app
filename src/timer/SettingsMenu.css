@@ -1,0 +1,27 @@
+.clock-options-container {
+    width: 100%;
+    height: calc(100vh - 270px);
+    border-collapse: collapse;
+}
+
+.clock-options {
+
+}
+
+.timer-type-row {
+    border-bottom: 1px solid #333;
+}
+
+.timer-type-selected {
+    background: #ddd;
+}
+
+.timer-type-name {
+    padding: 5px 0 0 10px;
+    font-size: 30px;
+}
+
+.timer-type-details {
+    padding: 5px 15px 5px 15px;
+    font-size: 20px;
+}

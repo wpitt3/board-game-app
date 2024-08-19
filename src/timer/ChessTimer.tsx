@@ -3,15 +3,17 @@ import React, { useEffect } from 'react';
 import './TimerControlButtons.css';
 import PlayerTable from "./PlayerTable";
 import EditPlayersTable from "./EditPlayersTable";
-import EditTime from "./EditTime";
 import { useSelector, useDispatch } from 'react-redux';
 import {RootState} from "../store";
 import {
     updateCountDown,
     nextPlayer,
-    updateMaxTime, updatePlayerName, updateSwapPlayers, updatePlayerColour,
+    updateMaxTime, updatePlayerName, updateSwapPlayers, updatePlayerColour, toggleSettings, toggleTimerMode
 } from "../redux/gameSlice";
 import TimerControlButtons from "./TimerControlButtons";
+import TimerHeader from "./TimerHeader";
+import SettingsMenu from "./SettingsMenu";
+import {TimerType} from "../definitions";
 
 function ChessTimer() {
     const dispatch = useDispatch();
@@ -19,6 +21,7 @@ function ChessTimer() {
     const activePlayerIndex = useSelector((state: RootState) => state.game.activePlayer);
     const players = useSelector((state: RootState) => state.game.players);
     const time = useSelector((state: RootState) => state.game.maxTime);
+    const timerMode = useSelector((state: RootState) => state.game.timerType);
 
     useEffect(() => {
         if (players.length > 0 && activePlayerIndex !== -1) {
@@ -45,6 +48,14 @@ function ChessTimer() {
         dispatch(updateMaxTime(newTime));
     };
 
+    const handleToggleSettings = () => {
+        dispatch(toggleSettings())
+    };
+
+    const handleTimerModeEdit = (i: TimerType) => {
+        dispatch(toggleTimerMode(i))
+    };
+
     const handleChangePlayerOrder = (fromI: number, toY: number) => {
         const playerWidth = (window.innerHeight - 80) / players.length;
         const toI = Math.floor((toY + (playerWidth / 2)) / playerWidth);
@@ -55,10 +66,12 @@ function ChessTimer() {
 
     return (
         <div>
-            {gameStatus === 'RESET' && <EditTime time={time} onTimeEdit={handleTimeEdit} />}
+            {(gameStatus === 'RESET' || gameStatus === 'SETTINGS') &&  <TimerHeader time={time} gameStatus={gameStatus} onTimerModeEdit={handleToggleSettings}/>}
+            {/*{gameStatus === 'RESET' && <EditTime time={time} onTimeEdit={handleTimeEdit} onTimerModeEdit={handleTimerModeEdit}/>}*/}
+            {gameStatus === 'SETTINGS' && <SettingsMenu onTimerTypeEdit={handleTimerModeEdit} timerMode={timerMode}/>}
             {gameStatus === 'RESET' && <EditPlayersTable players={players} onPlayerNameEdit={handlePlayerNameEdit} changePlayerColour={handleChangePlayerColour} />}
-            {gameStatus !== 'RESET' && <PlayerTable players={players} activePlayerIndex={activePlayerIndex} onTableRowClick={handleTableRowClick} onDrag={handleChangePlayerOrder}/>}
-            <TimerControlButtons/>
+            {gameStatus !== 'RESET' && gameStatus !== 'SETTINGS' && <PlayerTable players={players} activePlayerIndex={activePlayerIndex} onTableRowClick={handleTableRowClick} onDrag={handleChangePlayerOrder}/>}
+            {gameStatus !== 'SETTINGS' && <TimerControlButtons/>}
         </div>
     );
 }

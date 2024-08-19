@@ -1,3 +1,8 @@
+import exp from "constants";
+
+export type TimerType = 'TOTAL_TIMER' | 'TOTAL_COUNTDOWN' | 'ROUND_COUNTDOWN' | 'FISHER' | 'BRONSTEIN';
+
+export type GameStatus = 'RESET' | 'PLAY' | 'PAUSE' | 'SETTINGS';
 
 export interface Player {
     name: string;
@@ -7,9 +12,10 @@ export interface Player {
 }
 
 export interface GameState {
-    status: 'RESET' | 'PLAY' | 'PAUSE';
+    status: GameStatus;
     activePlayer: number;
     maxTime: number;
     players: Player[];
     lastChangeTime: number;
+    timerType: TimerType;
 }

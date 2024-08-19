@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {GameState, Player} from "../definitions";
+import {GameState, Player, TimerType} from "../definitions";
 
 const INITIAL_TIME = 60000;
 const MAX_PLAYER_COUNT = 10;
@@ -13,6 +13,7 @@ const initialState: GameState = {
         { name: 'Player', timer: INITIAL_TIME, live: true, colour: 0 },
         { name: 'Player', timer: INITIAL_TIME, live: true, colour: 1 },
     ],
+    timerType: 'TOTAL_COUNTDOWN'
 };
 
 const findNextActivePlayer = (from: number, players: Player[]) => {
@@ -49,6 +50,16 @@ const gameSlice = createSlice({
     name: 'game',
     initialState,
     reducers: {
+        toggleSettings(state) {
+            if (state.status == 'SETTINGS') {
+                state.status = 'RESET'
+            } else {
+                state.status = 'SETTINGS'
+            }
+        },
+        toggleTimerMode(state, action: PayloadAction<TimerType>) {
+            state.timerType = action.payload;
+        },
         updateMaxTime(state, action: PayloadAction<number>) {
             state.maxTime = action.payload;
             state.players.forEach( (player) => {
@@ -120,5 +131,5 @@ const gameSlice = createSlice({
     },
 });
 
-export const { updateMaxTime, nextPlayer, resetGame, pauseGame, updatePlayerName, addPlayer, removePlayer, updateSwapPlayers, updateCountDown, updatePlayerColour } = gameSlice.actions;
+export const { updateMaxTime, nextPlayer, resetGame, pauseGame, updatePlayerName, addPlayer, removePlayer, updateSwapPlayers, updateCountDown, updatePlayerColour, toggleSettings, toggleTimerMode } = gameSlice.actions;
 export default gameSlice.reducer;
