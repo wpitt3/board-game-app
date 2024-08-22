@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25d7077e-baea-483c-8da9-ec09d830a2d2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/definitions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/definitions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/gameSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/gameSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timer/ChessTimer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/ChessTimer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timer/EditTime.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/EditTime.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timer/EditTime.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/EditTime.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timer/SettingsMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/SettingsMenu.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/timer/SettingsMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer/SettingsMenu.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,6 +82,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

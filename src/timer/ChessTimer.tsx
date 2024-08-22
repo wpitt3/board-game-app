@@ -6,7 +6,7 @@ import EditPlayersTable from "./EditPlayersTable";
 import { useSelector, useDispatch } from 'react-redux';
 import {RootState} from "../store";
 import {
-    updateCountDown,
+    updatePlayerTime,
     nextPlayer,
     updateMaxTime, updatePlayerName, updateSwapPlayers, updatePlayerColour, toggleSettings, toggleTimerMode
 } from "../redux/gameSlice";
@@ -26,7 +26,7 @@ function ChessTimer() {
     useEffect(() => {
         if (players.length > 0 && activePlayerIndex !== -1) {
             const interval = setInterval(() => {
-                dispatch(updateCountDown()) //TODO store time in state and just use this to repaint
+                dispatch(updatePlayerTime()) //TODO store time in state and just use this to repaint
             }, 10);
             return () => clearInterval(interval);
         }

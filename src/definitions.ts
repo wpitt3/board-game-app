@@ -1,6 +1,6 @@
 import exp from "constants";
 
-export type TimerType = 'TOTAL_TIMER' | 'TOTAL_COUNTDOWN' | 'ROUND_COUNTDOWN' | 'FISHER' | 'BRONSTEIN';
+export type TimerType = 'STOPWATCH' | 'TOTAL_COUNTDOWN' | 'ROUND_COUNTDOWN' | 'FISHER' | 'BRONSTEIN';
 
 export type GameStatus = 'RESET' | 'PLAY' | 'PAUSE' | 'SETTINGS';
 

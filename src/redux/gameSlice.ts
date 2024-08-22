@@ -46,6 +46,21 @@ interface swapPlayersProps {
     to: number;
 }
 
+const updatePlayerTimer = (state: GameState) => {
+    if (state.activePlayer !== -1) {
+        if (state.timerType === 'STOPWATCH' ) {
+            state.players[state.activePlayer].timer += (Date.now() - state.lastChangeTime);
+        } else {
+            state.players[state.activePlayer].timer -= (Date.now() - state.lastChangeTime);
+        }
+        if (state.players[state.activePlayer].timer < 0) {
+            state.players[state.activePlayer].timer = 0;
+            state.players[state.activePlayer].live = false;
+        }
+    }
+    state.lastChangeTime = Date.now()
+};
+
 const gameSlice = createSlice({
     name: 'game',
     initialState,
@@ -59,6 +74,14 @@ const gameSlice = createSlice({
         },
         toggleTimerMode(state, action: PayloadAction<TimerType>) {
             state.timerType = action.payload;
+            if (action.payload === 'STOPWATCH') {
+                state.maxTime = 0;
+            } else {
+                state.maxTime = INITIAL_TIME;
+            }
+            state.players.forEach( (player) => {
+                player.timer = state.maxTime;
+            })
         },
         updateMaxTime(state, action: PayloadAction<number>) {
             state.maxTime = action.payload;
@@ -67,28 +90,45 @@ const gameSlice = createSlice({
             })
         },
         nextPlayer(state) {
-            if (state.activePlayer !== -1) {
-                state.players[state.activePlayer].timer -= (Date.now() - state.lastChangeTime);
-                if (state.players[state.activePlayer].timer < 0) {
-                    state.players[state.activePlayer].timer = 0;
-                    state.players[state.activePlayer].live = false;
+            updatePlayerTimer(state)
+            if (state.timerType === 'ROUND_COUNTDOWN') {
+                state.players.forEach( (player) => {
+                    if (!!player.live) {
+                        player.timer = state.maxTime;
+                    }
+                })
+            }
+            if (state.timerType === 'FISHER') {
+                if (state.activePlayer !== -1) {
+                    if (!!state.players[state.activePlayer].live) {
+                        state.players[state.activePlayer].timer += state.maxTime;
+                    }
                 }
             }
-            state.lastChangeTime = Date.now()
             state.activePlayer = findNextActivePlayer(state.activePlayer + 1, state.players);
             state.status = state.activePlayer === -1 ? 'PAUSE' : 'PLAY';
         },
         pauseGame(state) {
-            if (state.activePlayer !== -1) {
-                state.players[state.activePlayer].timer -= (Date.now() - state.lastChangeTime);
-                if (state.players[state.activePlayer].timer < 0) {
-                    state.players[state.activePlayer].timer = 0;
-                    state.players[state.activePlayer].live = false;
+            updatePlayerTimer(state)
+            if (state.timerType === 'ROUND_COUNTDOWN') {
+                state.players.forEach( (player) => {
+                    if (!!player.live) {
+                        player.timer = state.maxTime;
+                    }
+                })
+            }
+            if (state.timerType === 'FISHER') {
+                if (state.activePlayer !== -1) {
+                    if (!!state.players[state.activePlayer].live) {
+                        state.players[state.activePlayer].timer += state.maxTime;
+                    }
                 }
             }
-            state.lastChangeTime = Date.now()
             state.activePlayer = -1;
             state.status = 'PAUSE';
+        },
+        updatePlayerTime(state) {
+            updatePlayerTimer(state)
         },
         resetGame(state) {
             state.activePlayer = -1;
@@ -117,19 +157,9 @@ const gameSlice = createSlice({
             const { from, to } = action.payload;
             const removedItem = state.players.splice(from, 1)[0];
             state.players.splice(to > from ? to -1 : to, 0, removedItem);
-        },
-        updateCountDown(state) {
-            if (state.activePlayer !== -1) {
-                state.players[state.activePlayer].timer -= (Date.now() - state.lastChangeTime);
-                if (state.players[state.activePlayer].timer < 0) {
-                    state.players[state.activePlayer].timer = 0;
-                    state.players[state.activePlayer].live = false;
-                }
-                state.lastChangeTime = Date.now()
-            }
         }
     },
 });
 
-export const { updateMaxTime, nextPlayer, resetGame, pauseGame, updatePlayerName, addPlayer, removePlayer, updateSwapPlayers, updateCountDown, updatePlayerColour, toggleSettings, toggleTimerMode } = gameSlice.actions;
+export const { updateMaxTime, nextPlayer, resetGame, pauseGame, updatePlayerName, addPlayer, removePlayer, updateSwapPlayers, updatePlayerTime, updatePlayerColour, toggleSettings, toggleTimerMode } = gameSlice.actions;
 export default gameSlice.reducer;

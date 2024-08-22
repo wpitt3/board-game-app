@@ -39,7 +39,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({
      }) => {
 
     const timerTypeRow: TimerTypeRow[] = [
-        {timerType: "TOTAL_TIMER", title: "Stopwatch", description: "Counts time taken"},
+        {timerType: "STOPWATCH", title: "Stopwatch", description: "Counts time taken"},
         {timerType: "TOTAL_COUNTDOWN", title: "Per Game", description: "Timer per player for whole game"},
         {timerType: "ROUND_COUNTDOWN", title: "Per Turn", description: "Timer per player for each turn"},
         {timerType: "FISHER", title: "Fisher", description: "Time per turn, spare time is kept for later"},
@@ -47,7 +47,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({
 
     return (
         <div className={"clock-options-container"}>
-            {timerMode === 'TOTAL_TIMER' && <div className={"edit-time"}/>}
+            {timerMode === 'STOPWATCH' && <div className={"edit-time"}/>}
             {timerMode === 'TOTAL_COUNTDOWN' && <EditTime title={'Game :'} time={time} onTimeEdit={onTimeEdit}/>}
             {timerMode === 'ROUND_COUNTDOWN' && <EditTime title={'Turn :'} time={time} onTimeEdit={onTimeEdit}/>}
             {timerMode === 'FISHER' && <EditTime title={'Turn :'} time={time} onTimeEdit={onTimeEdit}/>}
