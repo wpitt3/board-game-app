@@ -40,7 +40,7 @@ const PlayerRow: React.FC<PlayerRowProps> = ({ player, index, active, onClick, o
     const hours = Math.floor(mins / 60)
 
     return (
-        <tr className={`player-row ${!player.live ? 'dead' : ''}  colour-${player.colour}`} onClick={onClick}
+        <tr className={`player-row ${!player.live ? 'dead' : ''}  colour-${player.colour}`} onTouchStart={onClick}
             draggable
             onTouchEnd={(e) => onDrag(e.changedTouches[0].clientY)}
         >

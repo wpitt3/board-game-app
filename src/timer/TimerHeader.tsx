@@ -43,7 +43,7 @@ const TimerHeader: React.FC<TimerHeaderProps> = ({onTimerModeEdit, time, gameSta
                 </div>
             }
             <div className={"timer-header-settings-container"}>
-                <div className={"timer-header-settings"} onClick={() => onTimerModeEdit()}><i className="material-icons">settings</i></div>
+                <div className={"timer-header-settings"} onTouchStart={() => onTimerModeEdit()}><i className="material-icons">settings</i></div>
             </div>
         </div>
     );

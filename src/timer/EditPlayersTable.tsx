@@ -26,7 +26,7 @@ const EditPlayerRow: React.FC<EditPlayerRowProps> = ({ player, onChange, changeP
             <td><input type="text"
                 value={player.name}
                 onChange={(e) => onChange(e.target.value.substring(0, 12))}
-            /><div onClick={changePlayerColour}></div>
+            /><div onTouchStart={changePlayerColour}></div>
             </td>
         </tr>
     );

@@ -24,7 +24,7 @@ interface TimerTypeRowProps extends TimerTypeRow {
 
 const TimerTypeRow: React.FC<TimerTypeRowProps> = ({ timerMode, title, description, onTimerTypeEdit, timerType}) => {
     return (
-        <div className={`timer-type-row ${timerMode === timerType ? 'timer-type-selected' : ''}`} onClick={() => onTimerTypeEdit(timerType)} >
+        <div className={`timer-type-row ${timerMode === timerType ? 'timer-type-selected' : ''}`} onTouchStart={() => onTimerTypeEdit(timerType)} >
             <div className={'timer-type-name'}> {title} </div>
             <div className={'timer-type-details'}> {description} </div>
         </div>

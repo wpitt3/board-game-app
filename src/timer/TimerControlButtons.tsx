@@ -34,14 +34,14 @@ const TimerControlButtons: React.FC = () => {
     return (
         <div className="time-control-buttons">
             <div className="time-control-buttons">
-                <button className='pause' onClick={handlePauseButtonClick}>
+                <button className='pause' onTouchStart={handlePauseButtonClick}>
                     {gameStatus === 'PLAY' ? 'Pause' : 'Play'}
                 </button>
-                {gameStatus !== 'PLAY' && (<button className='reset' onClick={handleResetButtonClick}>
+                {gameStatus !== 'PLAY' && (<button className='reset' onTouchStart={handleResetButtonClick}>
                     Reset
                 </button>)}
-                {gameStatus === 'RESET' && (<div className='player-change' ><button onClick={() => handleChangePlayerCount(-1)}>-</button>
-                        <button onClick={() => handleChangePlayerCount(+1)}>+</button></div>
+                {gameStatus === 'RESET' && (<div className='player-change' ><button onTouchStart={() => handleChangePlayerCount(-1)}>-</button>
+                        <button onTouchStart={() => handleChangePlayerCount(+1)}>+</button></div>
                 )}
             </div>
         </div>
