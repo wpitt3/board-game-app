@@ -1,8 +1,7 @@
 .edit-time {
-    height: 70px;
+    height: 80px;
     width: 100%;
     background: #cdb4db;
-    border-bottom: 10px solid #eee;
 }
 
 .edit-time-title {
@@ -24,8 +23,8 @@
 }
 
 .edit-time-item input{
-    font-size: 35px;
+    font-size: 30px;
     border: none;
     border-radius: 3px;
-    width: 50px;
+    width: 38px;
 }
